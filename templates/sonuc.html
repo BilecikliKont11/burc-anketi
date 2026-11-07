@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block icerik %}
+<h1>🔮 Tahminimiz: {{ k.tahmin }}</h1>
+
+<div class="kart">
+  <h3>En yüksek puanlı burçlar</h3>
+  <ul>
+    {% for b, p in siralama %}
+    <li>{{ b }}: {{ p }} puan</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="kart">
+  {% if k.gercek_burc %}
+    <p>Gerçek burcun: <b>{{ k.gercek_burc }}</b> —
+      {% if k.gercek_burc == k.tahmin %}tahminimiz tuttu! 🎉{% else %}bu sefer tutmadı.{% endif %}
+    </p>
+  {% else %}
+    <form method="post" action="{{ url_for('gercek', id=k._id) }}">
+      <p>İstersen gerçek burcunu söyle (anonim kalır):</p>
+      <select name="gercek" required>
+        {% for b in burclar %}<option>{{ b }}</option>{% endfor %}
+      </select>
+      <button class="buton kucuk" type="submit">Gönder</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

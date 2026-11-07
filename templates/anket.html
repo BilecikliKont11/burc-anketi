@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block icerik %}
+<h1>✨ Burcunu tahmin edelim</h1>
+<form method="post" action="{{ url_for('tahmin_et') }}">
+  {% for s in sorular %}
+  <div class="kart">
+    <h3>{{ loop.index }}. {{ s.metin }}</h3>
+    {% for o in s.secenekler %}
+    <label class="secenek">
+      <input type="radio" name="{{ s.id }}" value="{{ loop.index0 }}" required>
+      {{ o.metin }}
+    </label>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  <button class="buton" type="submit">Burcumu tahmin et</button>
+</form>
+{% endblock %}

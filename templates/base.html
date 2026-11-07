@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block baslik %}Burç Tahmini{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="kap">
+    {% block icerik %}{% endblock %}
+    <nav class="alt">
+      <a href="{{ url_for('ana') }}">Ankete dön</a> ·
+      <a href="{{ url_for('analiz') }}">Genel analiz</a>
+    </nav>
+  </div>
+  {% block scriptler %}{% endblock %}
+</body>
+</html>

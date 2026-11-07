@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block icerik %}
+<h1>📊 Genel analiz</h1>
+
+<div class="kart ozet">
+  <div><span class="sayi">{{ toplam }}</span><span>Toplam katılım</span></div>
+  <div><span class="sayi">{{ n }}</span><span>Burcunu söyleyen</span></div>
+  <div><span class="sayi">%{{ genel }}</span><span>Doğruluk</span></div>
+</div>
+<p class="not">Rastgele tahminde beklenen doğruluk yaklaşık %8,3'tür.</p>
+
+<div class="kart">
+  <table>
+    <tr><th>Gerçek burç</th><th>Kişi</th><th>Doğru tahmin</th><th>Oran</th></tr>
+    {% for s in satirlar %}
+    <tr><td>{{ s.burc }}</td><td>{{ s.n }}</td><td>{{ s.dogru }}</td><td>%{{ s.oran }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
